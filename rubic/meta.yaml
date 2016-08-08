@@ -2,9 +2,11 @@ package:
   name: r-rubic
   version: 1.0.2
 source:
-  fn: DESeq2_1.10.1.tar.gz
+  fn: RUBIC_1.0.2.tar.gz
   url: http://ccb.nki.nl/software/rubic/RUBIC_1.0.2.tar.gz
   md5: ff040087201cb5d48629b1caa3e5f6e4
+  patches:
+    - rubic_pdf.patch
 build:
   number: 0
   rpaths:

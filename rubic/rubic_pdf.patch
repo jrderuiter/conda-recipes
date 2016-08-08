@@ -1,0 +1,55 @@
+diff -Naur ./RUBIC_1.0.2/R/plot.R ./RUBIC_1.0.2_PDF/R/plot.R
+--- ./RUBIC_1.0.2/R/plot.R	2015-11-26 16:34:36.000000000 +0100
++++ ./RUBIC_1.0.2_PDF/R/plot.R	2016-08-08 21:15:48.000000000 +0200
+@@ -111,7 +111,7 @@
+ #'
+ #' @param x A vector of numbers.
+ #' @return A vector of strings of formatted numbers.
+-#' 
++#'
+ #' @noRd
+ location.format <- function(x) {
+   format(x, scientific=F, trim=T)
+@@ -174,7 +174,7 @@
+ #' @param steps A boolean value indicating whether to plot the segments as steps
+ #'              or horizontal segments.
+ #' @param chromosome The chromosome to be plotted.
+-#' 
++#'
+ #' @noRd
+ plot.cna <- function(amp.profile=NULL, del.profile=NULL,
+                      segments.p=NULL, segments.n=NULL,
+@@ -368,29 +368,28 @@
+   segs.p <- segments.as.data.table(a.prof, segments.p, markers)
+   segs.n <- segments.as.data.table(d.prof, segments.n, markers)
+ 
+-  extension <- 'eps'
++  extension <- 'pdf'
+ 
+-  setEPS()
+   for (chromosome in levels(map.loc[,Chromosome])) {
+     a.file.name <- file.path(dir, paste0('chromosome_', chromosome, '_all.', extension))
+     p.file.name <- file.path(dir, paste0('chromosome_', chromosome, '_gains.', extension))
+     n.file.name <- file.path(dir, paste0('chromosome_', chromosome, '_losses.', extension))
+ 
+-    cairo_ps(a.file.name, width=width, height=height)
++    pdf(a.file.name, width=width, height=height)
+     plot.cna(amp.profile=a.prof, del.profile=d.prof,
+              segments.p=segs.p, segments.n=segs.n,
+              focal.p=focal.p, focal.n=focal.n,
+              genes=genes, steps=steps, chromosome=chromosome)
+     dev.off()
+ 
+-    cairo_ps(p.file.name, width=width, height=height)
++    pdf(p.file.name, width=width, height=height)
+     plot.cna(amp.profile=a.prof,
+              segments.p=segs.p,
+              focal.p=focal.p,
+              genes=genes, steps=steps, chromosome=chromosome)
+     dev.off()
+ 
+-    cairo_ps(n.file.name, width=width, height=height)
++    pdf(n.file.name, width=width, height=height)
+     plot.cna(del.profile=d.prof,
+              segments.n=segs.n,
+              focal.n=focal.n,

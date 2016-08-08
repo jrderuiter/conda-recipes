@@ -1,0 +1,31 @@
+package:
+  name: r-rubic
+  version: 1.0.2
+source:
+  fn: DESeq2_1.10.1.tar.gz
+  url: http://ccb.nki.nl/software/rubic/RUBIC_1.0.2.tar.gz
+  md5: ff040087201cb5d48629b1caa3e5f6e4
+build:
+  number: 0
+  rpaths:
+    - lib/R/lib/
+    - lib/
+requirements:
+  build:
+    - r
+    - r-ggplot2 ==1.0.1
+    - r-data.table ==1.9.4
+    - r-pracma
+  run:
+    - r
+    - r-ggplot2 ==1.0.1
+    - r-data.table ==1.9.4
+    - r-pracma
+test:
+  commands:
+    - '$R -e "library(''data.table'')"'
+    - '$R -e "library(''RUBIC'')"'
+about:
+  home:
+  license:
+  summary:

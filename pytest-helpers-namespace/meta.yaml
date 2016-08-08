@@ -1,0 +1,64 @@
+package:
+  name: pytest-helpers-namespace
+  version: "2016.4.15"
+
+source:
+  fn: pytest-helpers-namespace-2016.4.15.tar.gz
+  url: https://files.pythonhosted.org/packages/d5/41/9a5e939aff20bf5f5d609a6581227318f34e5c63334048ddd7ef381237b5/pytest-helpers-namespace-2016.4.15.tar.gz
+  md5: 028a036f0a5c961fa56b60b8e2bcae97
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pytest-helpers-namespace = pytest-helpers-namespace:main
+    #
+    # Would create an entry point called pytest-helpers-namespace that calls pytest-helpers-namespace.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pytest >=2.9.1
+
+  run:
+    - python
+    - setuptools
+    - pytest >=2.9.1
+
+test:
+  # Python imports
+  imports:
+    - pytest_helpers_namespace
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/saltstack/pytest-helpers-namespace
+  license: Apache Software License
+  summary: 'PyTest Helpers Namespace'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
